@@ -3,11 +3,12 @@ import { StyleSheet, Text, View } from "react-native";
 import BottomNav from "./components/BottomNav";
 import LoginScreen from "./screens/LoginScreen";
 import SignupScreen from "./screens/Signupscreen";
+import Productpage from "./screens/ProductPage";
 
 export default function App() {
   // return <SignupScreen />;
-  return <LoginScreen />;
-  // return <RegisterScreen />;
+  // return <LoginScreen />;
+  return <Productpage />;
 }
 
 const styles = StyleSheet.create({
