@@ -24,7 +24,6 @@ const Cardslider = ({ data, navigation }) => {
                             <View style={styles.s2}>
                                 <Text style={styles.txt1}>{item.storeName}</Text>
                                 <View style={styles.s2in}>
-                                    {/* <Text style={styles.txt2}>Rs.{item.foodPrice}/-</Text> */}
                                     {item.storeType == 'mall' ? <Text>Mall</Text> : <Text>Shop</Text>}
                                 </View>
                             </View>
@@ -60,9 +59,9 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     card: {
-        width: '100%',
+        width: '90%',
         height: 300,
-        margin: 10,
+        margin: '5%',
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#e8e8e8',
@@ -109,6 +108,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         borderRadius: 10,
         width: '90%',
+        margin: '2.5%',
         textAlign: 'center',
     }
 })

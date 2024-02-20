@@ -45,17 +45,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',
-        top: -20,
-        backgroundColor: colors.text1,
+        top: -10,
+        backgroundColor: '#003049',
         width: 60,
         height: 60,
         borderRadius: 60,
     },
     icon2: {
         color: 'white',
-
     },
     icon1: {
-        color: colors.text1,
+        color: '#003049',
     }
 })
