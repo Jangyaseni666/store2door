@@ -96,5 +96,6 @@ module.exports = {
     flexDirection: "row",
     alignItems: "center",
     margin: 10,
+    height: 40,
   },
 };

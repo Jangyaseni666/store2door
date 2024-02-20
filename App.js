@@ -5,12 +5,14 @@ import LoginScreen from "./screens/LoginScreen";
 import SignupScreen from "./screens/Signupscreen";
 import Productpage from "./screens/ProductPage";
 import UserCart from "./screens/UserCart";
+import UserCart1 from "./screens/UserCart1";
 
 export default function App() {
   // return <SignupScreen />;
   // return <LoginScreen />;
   // return <Productpage />;
-  return <UserCart />;
+  // return <UserCart />;
+  return <UserCart1 />;
 }
 
 const styles = StyleSheet.create({

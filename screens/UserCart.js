@@ -2,6 +2,7 @@ import {
   FlatList,
   StyleSheet,
   Text,
+  TextInput,
   TouchableOpacity,
   View,
   Image,
@@ -11,6 +12,8 @@ import { btn2, colors, hr80, navbtn, navbtnin } from "../globals/style";
 import { AntDesign } from "@expo/vector-icons";
 // import { firebase } from '../../Firebase/firebaseConfig';
 import BottomNav from "../components/BottomNav";
+import { incdecbtn, incdecinput, incdecout } from "../globals/style";
+import CartItem from "../components/CartItem";
 
 const UserCart = ({ navigation }) => {
   const [cartdata, setCartdata] = useState(null);
@@ -62,6 +65,17 @@ const UserCart = ({ navigation }) => {
   //   getcartdata();
   // };
 
+  const increaseQuantity = () => {
+    setquantity((parseInt(quantity) + 1).toString());
+  };
+  const decreaseQuantity = () => {
+    if (parseInt(quantity) > 1) {
+      setquantity((parseInt(quantity) - 1).toString());
+    }
+  };
+
+  const [quantity, setquantity] = useState("1");
+
   // console.log(typeof (cartdata))
   // console.log(cartdata)
   return (
@@ -71,13 +85,13 @@ const UserCart = ({ navigation }) => {
           <AntDesign name="back" size={24} color="black" style={navbtnin} />
         </View>
       </TouchableOpacity>
-      <View style={styles.bottomnav}>
+      {/* <View style={styles.bottomnav}>
         <BottomNav navigation={navigation} />
-      </View>
+      </View> */}
       <View style={styles.container}>
         <Text style={styles.head1}>Your Bag</Text>
         <View style={styles.cartout}>
-          {cartdata == null || JSON.parse(cartdata).cart.length == 0 ? (
+          {/* {cartdata == null || JSON.parse(cartdata).cart.length == 0 ? (
             <Text style={styles.head2}>Your cart is Empty!!</Text>
           ) : (
             <FlatList
@@ -116,10 +130,10 @@ const UserCart = ({ navigation }) => {
                 );
               }}
             />
-          )}
+          )} */}
 
           {/* item example */}
-          {/* <View style={styles.cartcard}>
+          <View style={styles.cartcard}>
             <Image
               source={{
                 uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNfwZ9e9iBT5NXAQVPoETzq0k9AJ5_Pmrg2g&usqp=CAU",
@@ -128,12 +142,40 @@ const UserCart = ({ navigation }) => {
             />
             <View style={styles.cartcardin}>
               <View style={styles.c1}>
-                <Text style={styles.txt1}>
-                  1×&nbsp;Glock 19M
-                </Text>
+                <Text style={styles.txt1}>1×&nbsp;Glock 19M</Text>
                 <Text style={styles.txt2}>₹40,000/-</Text>
               </View>
-              <TouchableOpacity
+              {quantity > 1 ? (
+                <View style={incdecout}>
+                  <Text onPress={() => decreaseQuantity()} style={incdecbtn}>
+                    -
+                  </Text>
+
+                  <TextInput value={quantity} style={incdecinput} />
+                  <Text onPress={() => increaseQuantity()} style={incdecbtn}>
+                    +
+                  </Text>
+                </View>
+              ) : (
+                <View style={incdecout}>
+                  <Text onPress={() => deleteItem(item)} style={incdecbtn}>
+                    <AntDesign
+                      name="delete"
+                      size={22}
+                      color="black"
+                      style={styles.del}
+                    />
+                  </Text>
+
+                  <TextInput value={quantity} style={incdecinput} />
+                  <Text onPress={() => increaseQuantity()} style={incdecbtn}>
+                    +
+                  </Text>
+                </View>
+              )}
+            </View>
+          </View>
+          {/* <TouchableOpacity
                 style={styles.c4}
                 onPress={() => deleteItem(item)}
               >
@@ -144,9 +186,7 @@ const UserCart = ({ navigation }) => {
                   color="black"
                   style={styles.del}
                 />
-              </TouchableOpacity>
-            </View>
-          </View>
+              </TouchableOpacity> */}
           <View style={styles.cartcard}>
             <Image
               source={{
@@ -161,7 +201,36 @@ const UserCart = ({ navigation }) => {
                 </Text>
                 <Text style={styles.txt2}>₹2,500/-</Text>
               </View>
-              <TouchableOpacity
+              {quantity > 1 ? (
+                <View style={incdecout}>
+                  <Text onPress={() => decreaseQuantity()} style={incdecbtn}>
+                    -
+                  </Text>
+
+                  <TextInput value={quantity} style={incdecinput} />
+                  <Text onPress={() => increaseQuantity()} style={incdecbtn}>
+                    +
+                  </Text>
+                </View>
+              ) : (
+                <View style={incdecout}>
+                  <Text onPress={() => deleteItem(item)} style={incdecbtn}>
+                    <AntDesign
+                      name="delete"
+                      size={22}
+                      color="black"
+                      style={styles.del}
+                    />
+                  </Text>
+
+                  <TextInput value={quantity} style={incdecinput} />
+                  <Text onPress={() => increaseQuantity()} style={incdecbtn}>
+                    +
+                  </Text>
+                </View>
+              )}
+
+              {/* <TouchableOpacity
                 style={styles.c4}
                 onPress={() => deleteItem(item)}
               >
@@ -172,14 +241,15 @@ const UserCart = ({ navigation }) => {
                   color="black"
                   style={styles.del}
                 />
-              </TouchableOpacity>
+              </TouchableOpacity> */}
             </View>
-          </View> */}
+          </View>
         </View>
         <View style={styles.btncont}>
           <View style={styles.c3}>
             <Text style={styles.txt5}>Total</Text>
-            <Text style={styles.txt6}>₹{totalCost}</Text>
+            {/* <Text style={styles.txt6}>₹{totalCost}</Text> */}
+            <Text style={styles.txt6}>₹42,500/-</Text>
           </View>
           <TouchableOpacity style={btn2}>
             <Text
@@ -280,7 +350,7 @@ const styles = StyleSheet.create({
     marginTop: 0,
     flexDirection: "row",
     marginBottom: 80,
-    borderTopColor: colors.text3,
+    borderTopColor: colors.text1,
     borderTopWidth: 0.2,
   },
   bottomnav: {
@@ -349,6 +419,6 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   del: {
-    color: colors.text1,
+    color: colors.col1,
   },
 });

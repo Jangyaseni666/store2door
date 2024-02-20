@@ -5,19 +5,19 @@ import {
   StyleSheet,
   Image,
   ScrollView,
-  TextInput,
+  // TextInput,
 } from "react-native";
 import React, { useState } from "react";
 import {
-  btn1,
+  // btn1,
   btn2,
   colors,
   hr80,
   navbtn,
   navbtnin,
   navbtnout,
-  nonveg,
-  veg,
+  // nonveg,
+  // veg,
 } from "../globals/style";
 import { AntDesign } from "@expo/vector-icons";
 
@@ -27,8 +27,8 @@ import { incdecbtn, incdecinput, incdecout } from "../globals/style";
 
 const Productpage = ({ navigation, route }) => {
   // const data = route.params;
-  const [ischecked, setischecked] = useState(false);
-  const [quantity, setquantity] = useState("1");
+  // const [ischecked, setischecked] = useState(false);
+  // const [quantity, setquantity] = useState("1");
   // const [addonquantity, setaddonquantity] = useState("0");
   // console.log(data);
   // if (route.params === undefined) {
@@ -64,14 +64,14 @@ const Productpage = ({ navigation, route }) => {
   //   });
   // };
 
-  const increaseQuantity = () => {
-    setquantity((parseInt(quantity) + 1).toString());
-  };
-  const decreaseQuantity = () => {
-    if (parseInt(quantity) > 1) {
-      setquantity((parseInt(quantity) - 1).toString());
-    }
-  };
+  // const increaseQuantity = () => {
+  //   setquantity((parseInt(quantity) + 1).toString());
+  // };
+  // const decreaseQuantity = () => {
+  //   if (parseInt(quantity) > 1) {
+  //     setquantity((parseInt(quantity) - 1).toString());
+  //   }
+  // };
 
   // const increaseAddonQuantity = () => {
   //   setaddonquantity((parseInt(addonquantity) + 1).toString());
@@ -100,22 +100,27 @@ const Productpage = ({ navigation, route }) => {
       </TouchableOpacity>
 
       <View style={styles.container1}>
+        {/* product image */}
         <View style={styles.s1}>
           <Image
-            source={
-              {
-                // uri: data.foodImageUrl,
-              }
-            }
+            source={{
+              // uri: data.foodImageUrl,
+              uri: "https://i.redd.it/9b9pn2axkn091.jpg",
+            }}
             style={styles.cardimgin}
           />
         </View>
 
         <View style={styles.s2}>
+          {/* product name and price */}
           <View style={styles.s2in}>
             {/* <Text style={styles.head1}>{data.foodName}</Text>
             <Text style={styles.head2}>₹{data.foodPrice}/-</Text> */}
+            <Text style={styles.head1}>Glock 19M</Text>
+            <Text style={styles.head2}>₹40,000/-</Text>
           </View>
+
+          {/* about */}
           <View style={styles.s3}>
             <Text style={styles.head3}>About Product</Text>
             {/* <Text style={styles.head4}>{data.foodDescription}</Text> */}
@@ -127,16 +132,22 @@ const Productpage = ({ navigation, route }) => {
               )}
               <Text style={styles.head5}>{data.foodType}</Text>
             </View> */}
+            <Text style={styles.head4}>good thing to buy</Text>
           </View>
 
+          {/* location container */}
           <View style={styles.container2}>
             <Text style={styles.txt1}>Location</Text>
+            <Text style={styles.txt2}>Maqsad ammunition</Text>
             {/* <Text style={styles.txt2}>{data.restaurantName}</Text> */}
             <View style={styles.container2in}>
+              <Text style={styles.txt3}>Tower 9/11</Text>
               {/* <Text style={styles.txt3}>{data.restrauntAddressBuilding}</Text> */}
               <View style={styles.dash}></View>
+              <Text style={styles.txt3}>Punjab trade center</Text>
               {/* <Text style={styles.txt3}>{data.restrauntAddressStreet}</Text> */}
               <View style={styles.dash}></View>
+              <Text style={styles.txt3}>Jalandhar</Text>
               {/* <Text style={styles.txt3}>{data.restrauntAddressCity}</Text> */}
             </View>
           </View>
@@ -163,7 +174,8 @@ const Productpage = ({ navigation, route }) => {
             </View>
           )} */}
 
-          <View style={styles.container3}>
+          {/* quantity container */}
+          {/* <View style={styles.container3}>
             <View style={hr80}></View>
 
             <Text style={styles.txt3}>Quantity</Text>
@@ -178,13 +190,14 @@ const Productpage = ({ navigation, route }) => {
               </Text>
             </View>
             <View style={hr80}></View>
-          </View>
+          </View> */}
 
-          <View style={hr80}></View>
+          {/* total price container */}
+          {/* <View style={hr80}></View>
           <View style={styles.container4}>
             <View style={styles.c4in}>
-              <Text style={styles.txt2}>Total Price</Text>
-              {/* {data.foodAddonPrice ? (
+              <Text style={styles.txt2}>Total Price</Text> */}
+          {/* {data.foodAddonPrice ? (
                 <Text style={styles.txt3}>
                   ₹
                   {(
@@ -200,12 +213,13 @@ const Productpage = ({ navigation, route }) => {
                 </Text>
               )} */}
 
-              {/* dummy */}
-              {/* <Text style={styles.txt3_total}>₹40,000/-</Text> */}
-            </View>
-          </View>
-          <View style={hr80}></View>
+          {/* dummy */}
+          {/* <Text style={styles.txt3_total}>₹40,000/-</Text> */}
+          {/* </View> */}
+          {/* </View> */}
+          {/* <View style={hr80}></View> */}
 
+          {/* add to bag and buy now */}
           <View style={styles.btncont}>
             <TouchableOpacity
               style={btn2}
@@ -279,7 +293,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   head2: {
-    fontSize: 50,
+    fontSize: 40,
     fontWeight: "200",
     color: colors.text3,
   },
@@ -331,9 +345,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 0,
     flexDirection: "row",
+    // position: "absolute",
+    // bottom: "0",
   },
   container2: {
-    width: "90%",
+    width: "100%",
     backgroundColor: colors.col1,
     padding: 20,
     borderRadius: 20,
