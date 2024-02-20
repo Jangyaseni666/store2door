@@ -1,6 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
+import LiveTracking from "../components/LiveTracking";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -55,6 +56,39 @@ const HomeScreen = () => {
           Product Registration
         </Text>
       </Pressable>
+      <Pressable
+        onPress={() => {
+          navigation.navigate("MallPage");
+        }}
+      >
+        <Text
+          style={{
+            marginTop: 15,
+            textAlign: "center",
+            color: "gray",
+            fontSize: 16,
+          }}
+        >
+          Mall
+        </Text>
+      </Pressable>
+      <Pressable
+        onPress={() => {
+          navigation.navigate("OrderPage");
+        }}
+      >
+        <Text
+          style={{
+            marginTop: 15,
+            textAlign: "center",
+            color: "gray",
+            fontSize: 16,
+          }}
+        >
+          Order
+        </Text>
+      </Pressable>
+      <LiveTracking />
     </View>
   );
 };

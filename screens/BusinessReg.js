@@ -13,13 +13,12 @@ import { useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 
 const BusinessReg = () => {
   const [mallName, setMallName] = useState("");
   const [shopName, setShopName] = useState("");
-  const [phnNum, setPhnNum] = useState(0);
+  const [phnNum, setPhnNum] = useState("");
   const [pfp, setPfp] = useState(null);
   const [authCertificate, setAuthCertificate] = useState(null);
   const pickPfp = async () => {
@@ -174,7 +173,7 @@ const BusinessReg = () => {
         </View>
         <View>
           <Text style={{ textAlign: "left", fontWeight: "bold" }}>
-            {shopName == "" ? "Your Shops's name" : shopName}
+            {shopName == "" ? "Your Shop's name" : shopName}
           </Text>
           <Text style={{ textAlign: "left" }}>{mallName}</Text>
         </View>

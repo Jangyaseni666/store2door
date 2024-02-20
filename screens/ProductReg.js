@@ -25,8 +25,8 @@ const data = [
 
 export default function ProductReg() {
   const [productName, setProductName] = useState("");
-  const [productPrice, setProductPrice] = useState(0);
-  const [productAmt, setProductAmt] = useState(0);
+  const [productPrice, setProductPrice] = useState("");
+  const [productAmt, setProductAmt] = useState("");
   const [productImage, setProductImage] = useState(null);
   const [productDesc, setProductDesc] = useState("");
   const [value, setValue] = useState(null);
@@ -55,6 +55,7 @@ export default function ProductReg() {
       setProductImage(result.assets);
     }
   };
+
   return (
     <ScrollView contentInsetAdjustmentBehavior="never" style={{ padding: 30 }}>
       <KeyboardAvoidingView>
@@ -125,7 +126,6 @@ export default function ProductReg() {
               onChangeText={(text) => setProductPrice(text)}
               style={{ ...styles.inputField, ...{ maxWidth: "70%" } }}
               placeholder="Enter Price"
-              inputMode="numeric"
             />
           </View>
           {/*prod amt*/}
@@ -142,7 +142,6 @@ export default function ProductReg() {
               onChangeText={(text) => setProductAmt(text)}
               style={{ ...styles.inputField, ...{ maxWidth: "70%" } }}
               placeholder="Enter Amount"
-              inputMode="numeric"
             />
           </View>
         </View>

@@ -5,6 +5,8 @@ import BusinessReg from "../screens/BusinessReg";
 import HomeScreen from "../screens/HomeScreen";
 import Business from "../screens/Business";
 import ProductReg from "../screens/ProductReg";
+import MallPage from "../screens/MallPage";
+import OrderPage from "../screens/OrderPage";
 
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -29,6 +31,16 @@ const StackNavigator = () => {
         <Stack.Screen
           name="ProductReg"
           component={ProductReg}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="MallPage"
+          component={MallPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="OrderPage"
+          component={OrderPage}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

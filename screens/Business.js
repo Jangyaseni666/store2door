@@ -4,22 +4,119 @@ import {
   View,
   ScrollView,
   ImageBackground,
+  useWindowDimensions,
+  Image,
 } from "react-native";
-import React from "react";
 import { useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { Entypo } from "@expo/vector-icons";
+import { TabView, TabBar, SceneMap } from "react-native-tab-view";
+import { FontAwesome } from "@expo/vector-icons";
+import { SimpleGrid } from "react-native-super-grid";
 
 export default function Business() {
   const navigation = useNavigation();
   const [mallName, setMallName] = useState("");
   const [shopName, setShopName] = useState("");
+  const [shopAddr, setShopAddr] = useState("");
+  const [phnNum, setPhnNum] = useState("");
+  const [pfp, setPfp] = useState(null);
+  const [productName, setProductName] = useState("");
+  const [index, setIndex] = useState(0);
+  const layout = useWindowDimensions();
+  const [routes] = useState([
+    { key: "first", title: "INFO" },
+    { key: "second", title: "GALLERY" },
+  ]);
+  const Gallery = () => (
+    <ScrollView style={{ flex: 1, padding: 16 }}>
+      <SimpleGrid
+        itemDimension={150}
+        data={[1, 2, 3, 4]}
+        renderItem={({ item }) => (
+          <View style={styles.inputView}>
+            <Image
+              style={styles.pfpImg}
+              source={
+                pfp == null ? require("../assets/defaultPfp.jpg") : { uri: pfp }
+              }
+            />
+            <Text>{productName == "" ? "Product name" : productName}</Text>
+          </View>
+        )}
+      />
+    </ScrollView>
+  );
+
+  const Information = () => (
+    <ScrollView style={{ flex: 1, padding: 16 }}>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          marginVertical: 5,
+        }}
+      >
+        <Entypo
+          name="location-pin"
+          size={20}
+          color="gray"
+          style={{ marginTop: 4 }}
+        />
+        <Text style={{ fontSize: 19, color: "gray" }}>
+          {shopAddr == "" ? "your Shop address" : shopAddr}
+        </Text>
+      </View>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          marginVertical: 5,
+        }}
+      >
+        <FontAwesome
+          style={{ marginTop: 4, marginLeft: 5 }}
+          name="phone"
+          size={20}
+          color="gray"
+        />
+        <Text style={{ fontSize: 19, color: "gray" }}>
+          {phnNum == "" ? "Your phone number" : phnNum}
+        </Text>
+      </View>
+      <View style={{ margin: 10 }}>
+        <Text style={{ fontSize: 18, color: "gray" }}>Description:</Text>
+        <Text style={{ color: "gray" }}>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum
+          consequuntur nostrum et aspernatur repudiandae itaque saepe hic, odio,
+          nobis doloribus laboriosam. Voluptates nam in libero nisi officia
+          commodi fugit eaque unde dolore praesentium magni quis minima, saepe
+          necessitatibus ratione ducimus sunt beatae quam ipsam non quae magnam
+          natus totam quibusdam? Earum recusandae iure ab voluptas sint, beatae
+          rem quae aspernatur perferendis qui quibusdam magnam neque laborum sed
+          id repellendus amet aperiam soluta. Non, adipisci veniam. Vel veniam
+          deleniti repellat possimus sed libero atque assumenda. Laudantium
+          reiciendis, voluptates, quis quisquam magni rerum, repellat commodi
+          necessitatibus quam aliquam exercitationem ut blanditiis libero!
+        </Text>
+      </View>
+    </ScrollView>
+  );
+  const renderScene = SceneMap({
+    first: Information,
+    second: Gallery,
+  });
+  const renderTabBar = (props) => (
+    <TabBar
+      {...props}
+      indicatorStyle={{ backgroundColor: "white" }}
+      style={styles.tab}
+      labelStyle={{ fontWeight: "bold" }}
+    />
+  );
   return (
-    <ScrollView
-      contentInsetAdjustmentBehavior="never"
-      style={{ paddingTop: 30 }}
-    >
+    <View style={{ paddingTop: 30 }}>
       {/* bg img */}
       <View style={styles.container}>
         <ImageBackground
@@ -110,10 +207,18 @@ export default function Business() {
           </View>
         </View>
       </View>
-    </ScrollView>
+      <TabView
+        style={{ marginTop: 10, minHeight: 700 }}
+        navigationState={{ index, routes }}
+        renderScene={renderScene}
+        onIndexChange={setIndex}
+        initialLayout={{ width: layout.width }}
+        renderTabBar={renderTabBar}
+        tabBarPosition="top"
+      />
+    </View>
   );
 }
-
 const styles = StyleSheet.create({
   backArrow: {
     margin: 10,
@@ -124,5 +229,20 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+  },
+  tab: {
+    paddingTop: 0,
+    backgroundColor: "orange",
+    justifyContent: "space-between",
+  },
+  pfpImg: {
+    width: "90%",
+    height: 140,
+  },
+  inputView: {
+    alignItems: "center",
+    backgroundColor: "#D0D0D0",
+    paddingVertical: 5,
+    borderRadius: 5,
   },
 });
